@@ -51,6 +51,28 @@ definitions:
       message:
         type: string
     type: object
+  handlers.UpdateOpeningRequest:
+    properties:
+      company:
+        type: string
+      link:
+        type: string
+      location:
+        type: string
+      role:
+        type: string
+      salary:
+        type: integer
+      workmodel:
+        type: string
+    type: object
+  handlers.UpdateOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
   schemas.OpeningResponse:
     properties:
       company:
@@ -101,6 +123,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Delete opening
       tags:
       - Opening
     get:
@@ -128,6 +151,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Show opening
       tags:
       - Opening
     post:
@@ -156,6 +180,41 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Create opening
+      tags:
+      - Opening
+    put:
+      consumes:
+      - application/json
+      description: Update a job description
+      parameters:
+      - description: Opening identification
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Opening data to update
+        in: body
+        name: opening
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.UpdateOpeningRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.UpdateOpeningResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: update opening
       tags:
       - Opening
   /openings:
@@ -178,6 +237,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Show all openigns
       tags:
       - Opening
 swagger: "2.0"

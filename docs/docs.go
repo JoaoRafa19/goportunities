@@ -28,6 +28,7 @@ const docTemplate = `{
                 "tags": [
                     "Opening"
                 ],
+                "summary": "Show opening",
                 "parameters": [
                     {
                         "type": "string",
@@ -58,6 +59,57 @@ const docTemplate = `{
                     }
                 }
             },
+            "put": {
+                "description": "Update a job description",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Opening"
+                ],
+                "summary": "update opening",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Opening identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Opening data to update",
+                        "name": "opening",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handlers.UpdateOpeningRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.UpdateOpeningResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.ErrorResponse"
+                        }
+                    }
+                }
+            },
             "post": {
                 "description": "Create a new Job opening",
                 "consumes": [
@@ -69,6 +121,7 @@ const docTemplate = `{
                 "tags": [
                     "Opening"
                 ],
+                "summary": "Create opening",
                 "parameters": [
                     {
                         "description": "Request Body",
@@ -112,6 +165,7 @@ const docTemplate = `{
                 "tags": [
                     "Opening"
                 ],
+                "summary": "Delete opening",
                 "parameters": [
                     {
                         "type": "string",
@@ -155,6 +209,7 @@ const docTemplate = `{
                 "tags": [
                     "Opening"
                 ],
+                "summary": "Show all openigns",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -250,6 +305,40 @@ const docTemplate = `{
             }
         },
         "handlers.ShowOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handlers.UpdateOpeningRequest": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "integer"
+                },
+                "workmodel": {
+                    "type": "string"
+                }
+            }
+        },
+        "handlers.UpdateOpeningResponse": {
             "type": "object",
             "properties": {
                 "data": {
