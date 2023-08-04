@@ -1,9 +1,8 @@
-package main 
+package main
 
-import (
-	"github.com/gin-gonic/gin"
-)
+import "github.com/JoaoRafa19/goplaning/router"
 
 func main() {
-	print("Hello World")
+	// Initialize router
+	router.Initialize()
 }
