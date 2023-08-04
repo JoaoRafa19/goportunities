@@ -35,6 +35,13 @@ definitions:
       message:
         type: string
     type: object
+  handlers.ShowOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
   schemas.OpeningResponse:
     properties:
       company:
@@ -77,6 +84,33 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/handlers.DeleteOpeningResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      tags:
+      - Opening
+    get:
+      consumes:
+      - application/json
+      description: Show a Job opening description
+      parameters:
+      - description: Opening identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.ShowOpeningResponse'
         "404":
           description: Not Found
           schema:
