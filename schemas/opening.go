@@ -1,36 +1,35 @@
 package schemas
 
 import (
+	"time"
+
 	"gorm.io/gorm"
 )
 
-type WorkModel int
-
 const (
-	REMOTE     = 1
-	PRESENCIAL = 2
-	HIBRID     = 3
+	REMOTE = "REMOTE"
+	HIBRID = "HIBRID"
+	PRESENCIAL = "PRESENCIAL"
 )
-
-func (s WorkModel) String() string {
-	switch s {
-	case REMOTE:
-		return "REMOTE"
-	case PRESENCIAL:
-		return "PRESENCIAL"
-	case HIBRID:
-		return "HIBRID"
-	}
-	return "unknown"
-}
 
 type Opening struct {
 	gorm.Model
 	Role      string
 	Company   string
 	Location  string
-	WorkModel WorkModel
+	WorkModel string
 	Link      string
 	Salary    int64
 }
 
+type OpeningResponse struct {
+	ID         uint      `json:"id"`
+	Role       string    `json:"role"`
+	Company    string    `json:"company"`
+	Location   string    `json:"location"`
+	WorkModel  string    `json:"workmodel"`
+	Link       string    `json:"link"`
+	Salary     int64     `json:"salary"`
+	Created_at time.Time `json:"created_at"`
+	Updated_at time.Time `json:"updated_at"`
+}
