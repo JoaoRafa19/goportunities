@@ -1,2 +1,32 @@
 ###
-http://localhost:3000/api/v1/opening
+POST http://localhost:3000/api/v1/opening
+Content-Type: application/json 
+
+{
+	"role":"Desenvolvedorr backend - Node/NestJs",
+	"company":"BSSoftware",
+	"location":"Contagem - MG",
+	"workmodel":"HIBRID",
+	"link":"http://github.com/JoaoRafa19",
+	"salary":5000
+}
+### error message
+POST http://localhost:3000/api/v1/opening
+Content-Type: application/json 
+
+{
+	"role":"Junior Go backend developer",
+	"company":"",
+	"location":"Belo Horizonte - MG",
+	"workmodel":"REMOTE",
+	"link":"http://github.com/JoaoRafa19",
+	"salary":4000
+}
+
+
+
+### Delete opening
+DELETE http://localhost:3000/api/v1/opening?id=2
+
+### Get all  openings
+GET http://localhost:3000/api/v1/openings

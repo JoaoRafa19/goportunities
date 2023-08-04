@@ -46,3 +46,22 @@ func (r *CreateOpeningRequest) Validate() error {
 
 	return nil
 }
+
+// UpdateOpening
+
+type UpdateOpeningRequest struct {
+	Role      string `json:"role"`
+	Company   string `json:"company"`
+	Location  string `json:"location"`
+	WorkModel string `json:"workmodel"`
+	Link      string `json:"link"`
+	Salary    int64  `json:"salary"`
+}
+
+func (r *UpdateOpeningRequest) Validate() error {
+	if r.Role != "" || r.Company != "" || r.Location != "" || r.Link != "" || r.Salary > 0 || (r.WorkModel == schemas.REMOTE || r.WorkModel == schemas.HIBRID || r.WorkModel == schemas.PRESENCIAL) {
+		return nil
+	} else {
+		return fmt.Errorf("at least one field must be provided")
+	}
+}
