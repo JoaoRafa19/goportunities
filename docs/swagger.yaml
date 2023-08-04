@@ -35,6 +35,15 @@ definitions:
       message:
         type: string
     type: object
+  handlers.ListOpeningsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.OpeningResponse'
+        type: array
+      message:
+        type: string
+    type: object
   handlers.ShowOpeningResponse:
     properties:
       data:
@@ -141,6 +150,28 @@ paths:
             $ref: '#/definitions/handlers.CreateOpeningResponse'
         "400":
           description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      tags:
+      - Opening
+  /openings:
+    get:
+      consumes:
+      - application/json
+      description: Show all jobs
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.ListOpeningsResponse'
+        "404":
+          description: Not Found
           schema:
             $ref: '#/definitions/handlers.ErrorResponse'
         "500":

@@ -8,7 +8,17 @@ import (
 )
 
 
+// @BasePath /api/v1
 
+// @Summary Show all openigns
+// @Description Show all jobs
+// @Tags Opening
+// @Accept json
+// @Produce json
+// @Success 200 {object} ListOpeningsResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /openings [get]
 func ListOpening(ctx *gin.Context) {
 	openings := []schemas.Opening{}
 
