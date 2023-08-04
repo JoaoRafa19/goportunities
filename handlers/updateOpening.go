@@ -49,7 +49,7 @@ func UpdateOpening(ctx *gin.Context) {
 	}
 
 	if err := db.Save(&opening).Error; err != nil {
-		logger.ErrF("error update opening", err)
+		logger.ErrF("error update opening: %v", err)
 		sendError(ctx, http.StatusInternalServerError, "error updating opening")
 		return
 	}
