@@ -1,0 +1,15 @@
+#Padrao 
+*.exe 
+*.dll
+*.so
+*.dylib 
+
+#Teste
+*.test
+
+
+#Coverage 
+*.out 
+
+#Db Folder
+db/
