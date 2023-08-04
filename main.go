@@ -12,6 +12,7 @@ var (
 func main() {
 	// Initialize configs 
 	logger = config.GetLogger("main")
+	logger.Info("Starting application")
 	err := config.Init()
 	if err != nil {
 		logger.ErrF("Config inicialization error: %v", err)

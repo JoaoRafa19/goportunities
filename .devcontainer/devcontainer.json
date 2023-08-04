@@ -23,6 +23,7 @@
 		"vscode": {
 			"extensions": [
 				"humao.rest-client",
+				"alexcvzz.vscode-sqlite"
 				
 			]
 		}

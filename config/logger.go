@@ -67,7 +67,7 @@ func (l *Logger) Debugf(format string, v ...interface{}) {
 	l.err.Println(string(colorWhite))
 }
 
-func (l *Logger) InfoF(format string, v ...interface{}) {
+func (l *Logger)  InfoF(format string, v ...interface{}) {
 	l.info.Println(string(colorBlue))
 	l.info.Printf(format, v...)
 	l.info.Println(string(colorWhite))
